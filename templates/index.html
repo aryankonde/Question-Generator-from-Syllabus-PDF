@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Generator from PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Question Generator from PDF</h1>
+        <p>Upload your syllabus PDF and provide a base prompt to generate relevant questions.</p>
+        
+        <form id="syllabus-form" method="POST" enctype="multipart/form-data">
+            <label for="syllabus">Upload Syllabus (PDF):</label>
+            <input type="file" name="syllabus" accept=".pdf" required>
+
+            <label for="base_prompt">Base Prompt:</label>
+            <textarea name="base_prompt" placeholder="Enter your base prompt here..." required></textarea>
+
+            <label for="num_questions">Number of Questions:</label>
+            <input type="number" name="num_questions" placeholder="Enter the number of questions" required min="1">
+
+            <button type="submit">Generate Questions</button>
+        </form>
+
+        <div id="results"></div>
+
+        <div id="generate-papers-container">
+            <button id="generate-papers" disabled>Generate Question Papers</button>
+        </div>
+
+        <div id="download-links" style="margin-top: 20px;"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
